@@ -72,10 +72,9 @@ export default function ContactSection() {
         <div className={styles.heroInner}>
           <h1 className={styles.heading}>say hi.</h1>
           <p className={styles.statement}>
-            If you&apos;re building with AI, scaling operations, or looking to modernize how your
-            business executes, let&apos;s connect. Reach out to discuss a project, collaboration, or
-            explore how intelligent systems, automation, and software engineering can create
-            measurable impact.
+            Building with AI, Scaling Operations, or Modernizing how your
+            business executes? <br/>
+            Let&apos;s talk about creating measurable impact together.
           </p>
         </div>
       </div>

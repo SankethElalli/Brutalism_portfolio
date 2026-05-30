@@ -4,7 +4,7 @@ import About from '@/components/About'
 import WhatIDo from '@/components/WhatIDo'
 
 export const metadata = {
-  title: 'Sanketh Elalli - AI & Automation | Full-Stack Developer',
+  title: 'snketh.',
 }
 
 export default function HomePage() {

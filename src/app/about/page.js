@@ -1,16 +1,13 @@
-import BackButton from '@/components/BackButton'
 import ExperienceTable from '@/components/ExperienceTable'
 import styles from '@/styles/AboutPage.module.css'
 
 export const metadata = {
-  title: 'About — Sanketh Elalli',
+  title: 'about - snketh',
 }
 
 export default function AboutPage() {
   return (
     <div className={styles.page}>
-
-      <BackButton className={styles.backLink} fallback="/" />
 
       {/* ── Section 1: Cream hero ── */}
       <div className={styles.hero}>

@@ -13,11 +13,10 @@ export default function PortfolioGrid() {
 
       {/* ── Intro hero ── */}
       <div className={styles.hero}>
-        <h1 className={styles.heading}>work.</h1><br />
+        <h1 className={styles.heading}>work.</h1>
         <p className={styles.statement}>
-          I work at the intersection of AI & Automation, Full-Stack engineering, and GTM strategy -
-          designing intelligent systems that automate repetitive work, orchestrate AI and marketing
-          pipelines, and help organizations scale operations with greater efficiency and precision.
+          Intelligent systems at the intersection of AI &amp; Automation, GTM and
+          Full-stack engineering - built to help organizations scale with precision.
         </p>
       </div>
 

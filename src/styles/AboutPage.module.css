@@ -11,14 +11,14 @@
   padding-top: calc(var(--nav-height) + 4px);
   min-height: 100vh;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .heroInner {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 5px clamp(20px, 5vw, 80px) 80px;
+  padding: 0 clamp(20px, 5vw, 80px);
   display: flex;
   flex-direction: column;
   gap: 64px;
