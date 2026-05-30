@@ -1,0 +1,40 @@
+.hero {
+  min-height: calc(100vh - var(--nav-height));
+  display: flex;
+  align-items: center;
+  padding: 80px 0;
+}
+
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 32px 0 24px;
+}
+
+.statement {
+  font-size: clamp(3rem, 7.5vw, 8rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -3px;
+  max-width: 1100px;
+}
+
+.highlight {
+  background: var(--black);
+  color: var(--bg);
+  padding: 0 8px;
+  display: inline;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 60px 0;
+  }
+  .container {
+    padding: 0 20px;
+  }
+  .statement {
+    letter-spacing: -1.5px;
+  }
+}

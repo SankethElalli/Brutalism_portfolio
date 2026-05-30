@@ -1,0 +1,197 @@
+.page {
+  background: var(--bg);
+  min-height: 100vh;
+  margin-top: calc(-1 * (var(--nav-height) + 4px));
+  padding-top: calc(var(--nav-height) + 4px);
+  padding-bottom: 0;
+}
+
+/* ── Intro hero section ── */
+.hero {
+  max-width: 100%;
+  min-height: 100vh;
+  padding: 80px clamp(60px, 8vw, 140px) 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+}
+
+.heading {
+  font-size: clamp(3rem, 7vw, 9rem);
+  font-weight: 700;
+  letter-spacing: -4px;
+  line-height: 1;
+  color: var(--black);
+  margin: 0;
+}
+
+.statement {
+  font-size: clamp(1.4rem, 2.2vw, 2.2rem);
+  font-weight: 500;
+  line-height: 1.5;
+  color: rgba(10, 10, 10, 0.65);
+  max-width: 1100px;
+  letter-spacing: -0.5px;
+}
+
+/* ── Cards section wrapper ── */
+.cardsSection {
+  background: #0A0A0A;
+  padding-top: 100px;
+  padding-bottom: 120px;
+}
+
+/* Vertical list */
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 240px;
+}
+
+/* ── Entry: card + sticky side desc ── */
+.entry {
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  gap: 0 120px;
+  padding: 0 clamp(60px, 8vw, 140px);
+  align-items: start;
+}
+
+/* ── Clickable card ── */
+.card {
+  overflow: hidden;
+  background: var(--proj-bg);
+  color: var(--proj-text);
+  cursor: pointer;
+  border: 6px solid rgba(255, 255, 255, 0.65);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 16px 48px 0px;
+}
+
+.card:hover .arrow {
+  transform: rotate(-45deg);
+}
+
+/* Year + category strip */
+.strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px clamp(16px, 2.5vw, 32px);
+  border-bottom: 1px solid currentColor;
+}
+
+.year,
+.category {
+  font-family: 'Courier New', 'Courier', monospace;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+}
+
+/* Title row */
+.titleRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 10px clamp(16px, 2.5vw, 32px) 12px;
+}
+
+.title {
+  font-size: clamp(1.8rem, 3.8vw, 4.8rem);
+  font-weight: 700;
+  letter-spacing: -1.5px;
+  line-height: 1;
+  flex: 1;
+  min-width: 0;
+}
+
+.arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(2.2rem, 4vw, 5rem);
+  color: inherit;
+  flex-shrink: 0;
+  line-height: 1;
+  font-weight: 900;
+  transition: transform 0.22s ease;
+}
+
+/* Image */
+.imageWrap {
+  width: 100%;
+  aspect-ratio: 16 / 6;
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+}
+
+.imagePlaceholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.placeholderNum {
+  font-size: clamp(5rem, 10vw, 11rem);
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.13);
+  letter-spacing: -4px;
+}
+
+/* ── Sticky side description ── */
+.sideDesc {
+  position: sticky;
+  top: 90px;
+  height: fit-content;
+  color: inherit;
+  font-family: 'Courier New', 'Courier', monospace;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.8;
+  letter-spacing: 0.2px;
+  padding-top: 8px;
+}
+
+/* ── Mobile ── */
+@media (max-width: 900px) {
+  .hero {
+    padding: 48px 24px 80px;
+    gap: 36px;
+  }
+  .cardsSection {
+    padding-top: 60px;
+    padding-bottom: 80px;
+  }
+  .heading {
+    letter-spacing: -2px;
+  }
+  .entry {
+    grid-template-columns: 1fr;
+    padding: 0 24px;
+    gap: 0;
+  }
+  .sideDesc {
+    display: none;
+  }
+  .title {
+    letter-spacing: -1.5px;
+  }
+  .imageWrap {
+    aspect-ratio: 16 / 9;
+  }
+  .list {
+    padding-top: 60px;
+    gap: 80px;
+  }
+}

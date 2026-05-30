@@ -1,0 +1,110 @@
+.section {
+  background: var(--bg);
+  padding: 80px clamp(16px, 4vw, 56px) 100px;
+}
+
+/* Big display heading — matches project card title sizing */
+.heading {
+  font-size: clamp(2.6rem, 5.8vw, 7rem);
+  font-weight: 700;
+  letter-spacing: -2.5px;
+  line-height: 1;
+  color: var(--black);
+  margin-bottom: 56px;
+}
+
+/* Two-column content row */
+.content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(32px, 5vw, 72px);
+  align-items: start;
+}
+
+/* Left column */
+.leftCol {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* Large display-size paragraph */
+.para {
+  font-size: clamp(1.4rem, 2.1vw, 2.3rem);
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--black);
+}
+
+/* About Me arrow button */
+.aboutBtn {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--bg);
+  color: var(--black);
+  border: var(--border);
+  padding: 14px 24px;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  text-decoration: none;
+  box-shadow: var(--shadow-md);
+}
+
+.aboutBtn:hover {
+  background: var(--black);
+  color: var(--bg);
+}
+
+.aboutBtnArrow {
+  display: flex;
+  align-items: center;
+  font-size: 1.1rem;
+  transition: transform 0.22s ease;
+}
+
+.aboutBtn:hover .aboutBtnArrow {
+  transform: rotate(-45deg);
+}
+
+/* Right column — photo, natural height */
+.rightCol {
+  width: 100%;
+}
+
+.photo {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: var(--border);
+  box-shadow: var(--shadow-md);
+}
+
+.photoPlaceholder {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  background: #d8d4cc;
+  border: var(--border);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: rgba(10, 10, 10, 0.35);
+  text-align: center;
+  line-height: 1.7;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .content {
+    grid-template-columns: 1fr;
+  }
+  .rightCol {
+    max-width: 480px;
+  }
+}
