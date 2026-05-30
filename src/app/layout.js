@@ -14,6 +14,11 @@ export const metadata = {
   title: 'Sanketh Elalli - AI & Automation | Full-Stack Developer',
   description:
     'Portfolio of Sanketh Elalli - AI & Automation Engineer and Full-Stack Developer building reliable systems, RAG pipelines, and multi-agent AI workflows.',
+  icons: {
+    icon: '/assets/logos/favicon.png',
+    shortcut: '/assets/logos/favicon.png',
+    apple: '/assets/logos/favicon.png',
+  },
 }
 
 export default function RootLayout({ children }) {
