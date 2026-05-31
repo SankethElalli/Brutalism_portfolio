@@ -30,8 +30,8 @@ export default function WhatIDo() {
         ref={bodyRef}
         className={`${styles.body} ${visible ? styles.visible : ''}`}
       >
-        AI &amp; Automation. Backend Infrastructure. RAG Systems. 
-        Multi-Agent Workflows. <br />GTM Workflows. LLM Orchestraction. Full-Stack Development. Workflow Engineering.
+        AI &amp; Automation. BE Infrastructure. RAG Systems. 
+        GTM Workflows. Multi-Agent Workflows. Full-Stack Development.
       </p>
     </section>
   )

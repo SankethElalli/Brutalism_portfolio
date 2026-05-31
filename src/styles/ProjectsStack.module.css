@@ -31,11 +31,11 @@
 .year,
 .category {
   font-family: 'Courier New', 'Courier', monospace;
-  font-size: 0.78rem;
-  font-weight: 500;
+  font-size: 0.95rem;
+  font-weight: 700;
   letter-spacing: 2.5px;
   text-transform: uppercase;
-  opacity: 0.6;
+  opacity: 0.85;
 }
 
 /* ── Title row ── */
