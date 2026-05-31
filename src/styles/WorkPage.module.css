@@ -305,4 +305,19 @@
   .title {
     letter-spacing: -2px;
   }
+  /* Long titles (e.g. Blood Bank) — bigger but still ~2 lines on mobile */
+  .titleSmall {
+    font-size: clamp(1.95rem, 8.5vw, 2.8rem);
+    letter-spacing: -1px;
+    line-height: 1.1;
+  }
+  /* Visit Project button — clear gap from the content above on mobile */
+  .heroLink {
+    margin-top: 40px;
+  }
+  /* Back button stays fixed in place — no sticky follow on mobile */
+  .backLink {
+    position: static;
+    top: auto;
+  }
 }

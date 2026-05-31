@@ -139,17 +139,41 @@
 /* ── Mobile ── */
 @media (max-width: 768px) {
   .section {
-    padding-top: 60px;
-    padding-bottom: 60px;
+    padding-top: 40px;
+    padding-bottom: 40px;
   }
   .entry {
-    margin: 0 10px;
-    top: calc(var(--nav-height) + 40px);
+    top: calc(var(--nav-height) + 24px);
+    margin: 0 10px 180px;
   }
   .title {
     letter-spacing: -1.5px;
   }
+  /* Show the complete screenshot at its natural height — fills the
+     width fully, no cropping. Card color fills any short/transparent area. */
   .imageWrap {
-    aspect-ratio: 4 / 3;
+    aspect-ratio: auto;
+    min-height: 240px;
+    background: var(--proj-bg);
+    display: flex;
+    flex-direction: column;
+  }
+  .image {
+    height: auto;
+    object-fit: contain;
+    object-position: top;
+    background: var(--proj-bg);
+  }
+  .strip {
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .year,
+  .category {
+    font-size: 0.62rem;
+    letter-spacing: 1.5px;
+  }
+  .category {
+    text-align: right;
   }
 }

@@ -41,7 +41,7 @@ export default function PortfolioGrid() {
 
               {/* Title + arrow */}
               <div className={styles.titleRow}>
-                <h2 className={styles.title}>{project.title}</h2>
+                <h2 className={`${styles.title} ${project.title.length > 28 ? styles.titleLong : ''}`}>{project.title}</h2>
                 <span className={styles.arrow} aria-hidden="true">
                   <RiArrowRightLine />
                 </span>
