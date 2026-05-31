@@ -12,7 +12,7 @@ export async function generateMetadata({ params }) {
   const { id } = await params
   const project = projects.find((p) => p.id === parseInt(id))
   return {
-    title: project ? `${project.title} — Sanketh Elalli` : 'Project — Sanketh Elalli',
+    title: project ? `${project.title} - snketh` : 'Project - Sanketh Elalli',
   }
 }
 
