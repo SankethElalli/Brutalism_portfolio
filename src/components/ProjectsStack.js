@@ -62,7 +62,7 @@ export default function ProjectsStack() {
       <article
         className={`${styles.entry} ${styles.seeMore}`}
         style={{ zIndex: 6 }}
-        onClick={() => router.push('/portfolio')}
+        onClick={() => router.push('/work')}
       >
         <div className={styles.seeMoreInner}>
           <span className={styles.seeMoreText}>see more</span>

@@ -84,6 +84,16 @@
   transition: box-shadow 0.15s ease, transform 0.15s ease;
 }
 
+.heroLink:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-md);
+}
+
+.heroLink:active {
+  transform: translate(3px, 3px);
+  box-shadow: 1px 1px 0 var(--black);
+}
+
 .heroLink:hover .heroLinkArrow {
   transform: rotate(-45deg);
 }
@@ -193,6 +203,22 @@
 }
 
 .listItem:first-child {
+  margin-top: 0;
+}
+
+.subList {
+  list-style: disc;
+  margin: 12px 0 0 1.4rem;
+  padding: 0;
+}
+
+.subListItem {
+  margin-top: 12px;
+  margin-bottom: 0;
+  line-height: 1.75;
+}
+
+.subListItem:first-child {
   margin-top: 0;
 }
 

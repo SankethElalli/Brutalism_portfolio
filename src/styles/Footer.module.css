@@ -101,10 +101,14 @@
 }
 
 .contactBtn:hover {
-  background: var(--bg);
-  color: var(--black);
   border-color: var(--bg);
-  box-shadow: 5px 5px 0 rgba(255, 255, 255, 0.2);
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 rgba(255, 255, 255, 0.2);
+}
+
+.contactBtn:active {
+  transform: translate(3px, 3px);
+  box-shadow: 1px 1px 0 rgba(255, 255, 255, 0.22);
 }
 
 /* Contact button — light */
@@ -115,10 +119,14 @@
 }
 
 .footerLight .contactBtn:hover {
-  background: var(--black);
-  color: var(--bg);
   border-color: var(--black);
+  transform: translate(-2px, -2px);
   box-shadow: var(--shadow-md);
+}
+
+.footerLight .contactBtn:active {
+  transform: translate(5px, 5px);
+  box-shadow: 1px 1px 0 var(--black);
 }
 
 .arrow {

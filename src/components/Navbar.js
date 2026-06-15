@@ -9,7 +9,7 @@ import styles from '@/styles/Navbar.module.css'
 const navLinks = [
   { label: 'home', href: '/' },
   { label: 'about', href: '/about' },
-  { label: 'work', href: '/portfolio' },
+  { label: 'work', href: '/work' },
   { label: 'contact', href: '/contact' },
 ]
 
@@ -18,6 +18,11 @@ export default function Navbar() {
   const [hidden, setHidden] = useState(false)
   const lastScrollY = useRef(0)
   const pathname = usePathname()
+  const isActiveLink = (href) => (
+    href === '/'
+      ? pathname === href
+      : pathname === href || pathname.startsWith(`${href}/`)
+  )
 
   useEffect(() => {
     const onScroll = () => {
@@ -47,7 +52,7 @@ export default function Navbar() {
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className={`${styles.navLink} ${pathname === link.href ? styles.navLinkActive : ''}`}
+                  className={`${styles.navLink} ${isActiveLink(link.href) ? styles.navLinkActive : ''}`}
                 >
                   {link.label}
                 </Link>
@@ -70,7 +75,7 @@ export default function Navbar() {
           <Link
             key={link.href}
             href={link.href}
-            className={`${styles.mobileLink} ${pathname === link.href ? styles.mobileLinkActive : ''}`}
+            className={`${styles.mobileLink} ${isActiveLink(link.href) ? styles.mobileLinkActive : ''}`}
             onClick={() => setMenuOpen(false)}
           >
             {link.label}

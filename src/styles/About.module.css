@@ -52,11 +52,16 @@
   letter-spacing: 0.3px;
   text-decoration: none;
   box-shadow: var(--shadow-md);
+  transition: background 0.15s ease, color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
 }
 
 .aboutBtn:hover {
-  background: var(--black);
-  color: var(--bg);
+  box-shadow: var(--shadow-lg);
+}
+
+.aboutBtn:active {
+  transform: translate(5px, 5px);
+  box-shadow: 1px 1px 0 var(--black);
 }
 
 .aboutBtnArrow {

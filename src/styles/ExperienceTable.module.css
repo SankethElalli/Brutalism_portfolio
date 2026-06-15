@@ -97,10 +97,13 @@
 }
 
 .infoBtn:hover {
-  background: var(--black);
-  color: var(--bg);
   box-shadow: var(--shadow-md);
   transform: translate(-2px, -2px);
+}
+
+.infoBtn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--black);
 }
 
 /* ── Overlay ── */
@@ -203,12 +206,18 @@
   cursor: pointer;
   flex-shrink: 0;
   color: var(--black);
-  transition: background 0.15s ease;
+  box-shadow: var(--shadow-sm);
+  transition: background 0.15s ease, color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
 }
 
 .close:hover {
-  background: var(--black);
-  color: var(--bg);
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-md);
+}
+
+.close:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--black);
 }
 
 .panelList {

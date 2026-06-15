@@ -1,16 +1,16 @@
 import Link from 'next/link'
 import { RiArrowLeftLine } from 'react-icons/ri'
 import { RiArrowRightLine } from 'react-icons/ri'
-import { projects } from '@/data/projects'
+import { workItems } from '@/data/projects'
 import styles from '@/styles/WorkPage.module.css'
 
 export function generateStaticParams() {
-  return projects.map((p) => ({ id: String(p.id) }))
+  return workItems.map((p) => ({ id: String(p.id) }))
 }
 
 export async function generateMetadata({ params }) {
   const { id } = await params
-  const project = projects.find((p) => p.id === parseInt(id))
+  const project = workItems.find((p) => String(p.id) === id)
   return {
     title: project ? `${project.title} - snketh` : 'Project - Sanketh Elalli',
   }
@@ -18,13 +18,39 @@ export async function generateMetadata({ params }) {
 
 export default async function WorkPage({ params }) {
   const { id } = await params
-  const project = projects.find((p) => p.id === parseInt(id))
+  const project = workItems.find((p) => String(p.id) === id)
+
+  const achievementSegments = []
+  let currentBulletGroup = null
+
+  if (project?.achievements) {
+    project.achievements.forEach((rawItem) => {
+      const item = rawItem ?? ''
+      const trimmed = item.trim()
+      if (!trimmed) {
+        currentBulletGroup = null
+        return
+      }
+
+      if (trimmed.startsWith('-')) {
+        const bullet = trimmed.slice(1).trim()
+        if (!currentBulletGroup) {
+          currentBulletGroup = { type: 'bullets', items: [] }
+          achievementSegments.push(currentBulletGroup)
+        }
+        currentBulletGroup.items.push(bullet)
+      } else {
+        currentBulletGroup = null
+        achievementSegments.push({ type: 'text', content: item })
+      }
+    })
+  }
 
   if (!project) {
     return (
       <div className={styles.notFound}>
         <p>Project not found.</p>
-        <Link href="/portfolio" className={styles.backLink}>←</Link>
+        <Link href="/work" className={styles.backLink}>←</Link>
       </div>
     )
   }
@@ -33,7 +59,7 @@ export default async function WorkPage({ params }) {
     <div className={styles.page}>
 
       {/* Back link */}
-      <Link href="/portfolio" className={styles.backLink}>
+      <Link href="/work" className={styles.backLink}>
         <RiArrowLeftLine />
       </Link>
 
@@ -53,7 +79,7 @@ export default async function WorkPage({ params }) {
           >
             visit project <span className={styles.heroLinkArrow}><RiArrowRightLine /></span>
           </a>
-        ) : (
+        ) : project.isAutomation ? null : (
           <span className={`${styles.heroLink} ${styles.heroLinkDisabled}`}>
             Link Coming Soon <span className={styles.heroLinkArrow}><RiArrowRightLine /></span>
           </span>
@@ -82,17 +108,26 @@ export default async function WorkPage({ params }) {
 
         {/* Left */}
         <div className={styles.left}>
-          {project.achievements && project.achievements.length > 0 ? (
+          {achievementSegments.length > 0 ? (
             <div className={styles.block}>
-              <span className={styles.blockLabel}>Process</span>
+              <span className={styles.blockLabel}>{project.detailLabel || 'Process'}</span>
               <ul className={styles.list}>
-                {project.achievements.map((item, i) => (
-                  <li
-                    key={i}
-                    className={`${styles.listItem} ${item.trimStart().startsWith('-') ? styles.bulletItem : ''}`}
-                  >
-                    {item}
-                  </li>
+                {achievementSegments.map((segment, index) => (
+                  segment.type === 'text' ? (
+                    <li key={index} className={styles.listItem}>
+                      {segment.content}
+                    </li>
+                  ) : (
+                    <li key={index} className={styles.listItem}>
+                      <ul className={styles.subList}>
+                        {segment.items.map((bullet, bulletIndex) => (
+                          <li key={bulletIndex} className={styles.subListItem}>
+                            {bullet}
+                          </li>
+                        ))}
+                      </ul>
+                    </li>
+                  )
                 ))}
               </ul>
             </div>

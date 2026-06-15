@@ -61,6 +61,11 @@
   box-shadow: var(--shadow-lg);
 }
 
+.closeBtn:active {
+  transform: translate(3px, 3px);
+  box-shadow: 1px 1px 0 var(--black);
+}
+
 /* ── Carousel row: arrow + card + arrow ── */
 .carouselRow {
   display: flex;
@@ -93,8 +98,8 @@
 }
 
 .arrowBtn:active {
-  transform: translate(0, 0);
-  box-shadow: var(--shadow-sm);
+  transform: translate(3px, 3px);
+  box-shadow: 1px 1px 0 var(--black);
 }
 
 /* ── Card ── */
