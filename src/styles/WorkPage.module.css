@@ -80,19 +80,11 @@
   letter-spacing: 0.3px;
   text-decoration: none;
   border: var(--border);
-  box-shadow: var(--shadow-sm);
-  transition: box-shadow 0.15s ease, transform 0.15s ease;
+  transition: all 0.1s ease;
 }
 
-.heroLink:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: var(--shadow-md);
-}
+/* hover/active handled by .btn/.neubrutal-btn utility */
 
-.heroLink:active {
-  transform: translate(3px, 3px);
-  box-shadow: 1px 1px 0 var(--black);
-}
 
 .heroLink:hover .heroLinkArrow {
   transform: rotate(-45deg);

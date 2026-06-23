@@ -433,19 +433,12 @@
     letter-spacing: -1px;
     line-height: 1.1;
   }
-  /* Show the complete screenshot — natural height, card color fills gaps */
   .imageWrap {
-    aspect-ratio: auto;
-    min-height: 200px;
-    background: var(--proj-bg);
-    display: flex;
-    flex-direction: column;
+    aspect-ratio: 16 / 7;
   }
   .image {
-    height: auto;
-    object-fit: contain;
+    object-fit: cover;
     object-position: top;
-    background: var(--proj-bg);
   }
   /* Strip — shrink category so year + category fit / align cleanly */
   .strip {

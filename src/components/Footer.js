@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { usePathname } from 'next/navigation'
-import Link from 'next/link'
+import { Link } from 'next-view-transitions'
 import { RiArrowRightLine } from 'react-icons/ri'
 import { automationWorkflows } from '@/data/projects'
 import styles from '@/styles/Footer.module.css'
@@ -17,7 +17,7 @@ export default function Footer() {
   const isContact = pathname.startsWith('/contact')
   const workId = pathname.startsWith('/work/') ? decodeURIComponent(pathname.split('/').pop()) : null
   const isAutomationDetail = workId ? automationIds.has(workId) : false
-  const isLight = pathname === '/' || ((pathname === '/work' || pathname.startsWith('/work/')) && !isAutomationDetail) || pathname.startsWith('/portfolio') || isContact
+  const isLight = pathname === '/' || pathname === '/work' || pathname.startsWith('/portfolio') || isContact
 
   useEffect(() => {
     const el = ref.current

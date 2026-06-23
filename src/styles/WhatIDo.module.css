@@ -1,13 +1,20 @@
 .section {
   background: var(--black);
-  padding: 0 clamp(16px, 4vw, 56px);
-  min-height: 100vh;
+  /* tall enough for 6 items to reveal one-by-one as you scroll */
+  height: 280vh;
+}
+
+/* sticky panel stays in view while items animate in */
+.sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding: 0 clamp(16px, 4vw, 56px);
 }
 
-/* Heading — same size as About */
 .heading {
   font-size: clamp(2.6rem, 5.8vw, 7rem);
   font-weight: 700;
@@ -17,26 +24,32 @@
   margin-bottom: 52px;
 }
 
-/* Body text — same size as About paragraph, fades up on scroll-into-view */
-.body {
+.list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  max-width: 1100px;
+}
+
+.listItem {
   font-size: clamp(1.4rem, 2.1vw, 2.3rem);
   line-height: 1.5;
   font-weight: 400;
   color: var(--white);
-  max-width: 1100px;
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.65s ease, transform 0.65s ease;
-  transition-delay: 0.1s;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.body.visible {
-  opacity: 1;
-  transform: translateY(0);
+.listItem:first-child {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 @media (max-width: 768px) {
   .section {
-    padding: 64px 20px 80px;
+    height: 320vh;
+  }
+
+  .sticky {
+    padding: 0 20px;
   }
 }

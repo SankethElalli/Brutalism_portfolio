@@ -1,34 +1,59 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
+import localFont from 'next/font/local'
 import styles from '@/styles/Hero.module.css'
+
+const champs = localFont({
+  src: [
+    { path: '../Champs-Font/champs-regular.otf', weight: '400', style: 'normal' },
+    { path: '../Champs-Font/champs-oblique.otf', weight: '400', style: 'oblique' },
+  ],
+  variable: '--font-champs',
+})
 
 const STATEMENT = 'i get obsessed with making things run on their own.'
 
+const container = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.07,
+      delayChildren: 0.1,
+    },
+  },
+}
+
+const word = {
+  hidden: { y: '60%', opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.7,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+}
+
 export default function Hero() {
-  const [mounted, setMounted] = useState(false)
   const words = STATEMENT.split(' ')
 
-  useEffect(() => {
-    const id = requestAnimationFrame(() => setMounted(true))
-    return () => cancelAnimationFrame(id)
-  }, [])
-
   return (
-    <section className={styles.hero}>
+    <section className={`${styles.hero} ${champs.variable}`}>
       <div className={styles.container}>
-        <h1 className={`${styles.statement} ${mounted ? styles.play : ''}`}>
-          {words.map((word, i) => (
-            <span key={i} className={styles.word}>
-              <span
-                className={styles.wordInner}
-                style={{ transitionDelay: `${0.1 + i * 0.07}s` }}
-              >
-                {word}
-              </span>
-            </span>
+        <motion.h1
+          className={styles.statement}
+          variants={container}
+          initial="hidden"
+          animate="visible"
+        >
+          {words.map((w, i) => (
+            <motion.span key={i} className={styles.word} variants={word}>
+              {w}
+            </motion.span>
           ))}
-        </h1>
+        </motion.h1>
       </div>
     </section>
   )

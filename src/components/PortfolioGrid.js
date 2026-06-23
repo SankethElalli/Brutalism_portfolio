@@ -1,14 +1,22 @@
 'use client'
 
 import { useState } from 'react'
-import { useRouter } from 'next/navigation'
+import { useTransitionRouter } from 'next-view-transitions'
 import { RiArrowRightLine } from 'react-icons/ri'
 import { automationWorkflows, projects } from '@/data/projects'
 import styles from '@/styles/Portfolio.module.css'
 
 export default function PortfolioGrid() {
-  const router = useRouter()
+  const router = useTransitionRouter()
   const [activeSection, setActiveSection] = useState('product')
+
+  function switchSection(section) {
+    if (typeof document !== 'undefined' && document.startViewTransition) {
+      document.startViewTransition(() => setActiveSection(section))
+    } else {
+      setActiveSection(section)
+    }
+  }
   const isAutomation = activeSection === 'automation'
 
   return (
@@ -30,8 +38,8 @@ export default function PortfolioGrid() {
               type="button"
               role="tab"
               aria-selected={!isAutomation}
-              className={`${styles.switchButton} ${!isAutomation ? styles.switchButtonActive : ''}`}
-              onClick={() => setActiveSection('product')}
+              className={`${styles.switchButton} ${!isAutomation ? styles.switchButtonActive : ''} neubrutal-btn`}
+              onClick={() => switchSection('product')}
             >
               Product &amp; Engineering
             </button>
@@ -39,8 +47,8 @@ export default function PortfolioGrid() {
               type="button"
               role="tab"
               aria-selected={isAutomation}
-              className={`${styles.switchButton} ${isAutomation ? styles.switchButtonActive : ''}`}
-              onClick={() => setActiveSection('automation')}
+              className={`${styles.switchButton} ${isAutomation ? styles.switchButtonActive : ''} neubrutal-btn`}
+              onClick={() => switchSection('automation')}
             >
               AI Agents &amp; Automation
             </button>
@@ -53,7 +61,7 @@ export default function PortfolioGrid() {
           </div>
         </div>
 
-        <div key={activeSection} className={styles.sectionPanel}>
+        <div className={styles.sectionPanel} style={{ viewTransitionName: 'section-panel' }}>
           {isAutomation ? (
             <div className={styles.automationGrid}>
               {automationWorkflows.map((workflow) => (

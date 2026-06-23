@@ -52,16 +52,17 @@
   letter-spacing: 0.3px;
   text-decoration: none;
   box-shadow: var(--shadow-md);
-  transition: background 0.15s ease, color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+  transition: all 0.1s ease;
 }
 
 .aboutBtn:hover {
-  box-shadow: var(--shadow-lg);
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0 0 #000;
 }
 
 .aboutBtn:active {
-  transform: translate(5px, 5px);
-  box-shadow: 1px 1px 0 var(--black);
+  transform: translate(3px, 3px);
+  box-shadow: none;
 }
 
 .aboutBtnArrow {

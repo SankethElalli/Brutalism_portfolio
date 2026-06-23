@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
-import Link from 'next/link'
+import { Link } from 'next-view-transitions'
 import { usePathname } from 'next/navigation'
 import { RiCloseLine, RiMenuLine } from 'react-icons/ri'
 import styles from '@/styles/Navbar.module.css'

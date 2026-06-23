@@ -79,54 +79,53 @@
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.65);
   margin-top: 12px;
+  white-space: nowrap;
 }
 
 .footerLight .role {
   color: rgba(10, 10, 10, 0.75);
 }
 
-/* Contact button — dark */
+/* Contact button — dark: inverted neubrutalism (cream border+shadow on dark bg) */
 .contactBtn {
   display: flex;
   align-items: center;
   gap: 14px;
-  border: 2px solid rgba(255, 255, 255, 0.3);
   padding: 16px 28px;
   font-size: 0.88rem;
   font-weight: 700;
   letter-spacing: 0.3px;
   color: var(--bg);
-  box-shadow: 4px 4px 0 rgba(255, 255, 255, 0.1);
-  transition: background 0.15s ease, color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+  border: 3px solid var(--bg);
+  border-radius: 0;
+  box-shadow: 5px 5px 0 0 var(--bg);
+  cursor: pointer;
+  transition: all 0.1s ease;
 }
 
 .contactBtn:hover {
-  border-color: var(--bg);
   transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0 rgba(255, 255, 255, 0.2);
+  box-shadow: 7px 7px 0 0 var(--bg);
 }
 
 .contactBtn:active {
   transform: translate(3px, 3px);
-  box-shadow: 1px 1px 0 rgba(255, 255, 255, 0.22);
+  box-shadow: none;
 }
 
-/* Contact button — light */
+/* Contact button — light: standard black neubrutalism */
 .footerLight .contactBtn {
-  border: var(--border);
   color: var(--black);
-  box-shadow: var(--shadow-sm);
+  border-color: var(--black);
+  box-shadow: 5px 5px 0 0 var(--black);
 }
 
 .footerLight .contactBtn:hover {
-  border-color: var(--black);
-  transform: translate(-2px, -2px);
-  box-shadow: var(--shadow-md);
+  box-shadow: 7px 7px 0 0 var(--black);
 }
 
 .footerLight .contactBtn:active {
-  transform: translate(5px, 5px);
-  box-shadow: 1px 1px 0 var(--black);
+  box-shadow: none;
 }
 
 .arrow {

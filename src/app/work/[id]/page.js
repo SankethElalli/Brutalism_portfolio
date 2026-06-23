@@ -1,7 +1,8 @@
-import Link from 'next/link'
+import { Link } from 'next-view-transitions'
 import { RiArrowLeftLine } from 'react-icons/ri'
 import { RiArrowRightLine } from 'react-icons/ri'
 import { workItems } from '@/data/projects'
+import ParallaxImage from '@/components/ParallaxImage'
 import styles from '@/styles/WorkPage.module.css'
 
 export function generateStaticParams() {
@@ -74,7 +75,7 @@ export default async function WorkPage({ params }) {
             href={project.link}
             target="_blank"
             rel="noopener noreferrer"
-            className={styles.heroLink}
+            className={`${styles.heroLink} neubrutal-btn`}
             style={{ background: project.bgColor, color: project.textColor }}
           >
             visit project <span className={styles.heroLinkArrow}><RiArrowRightLine /></span>
@@ -88,19 +89,17 @@ export default async function WorkPage({ params }) {
 
       {/* Project image */}
       {project.imageSrc && (
-        <div className={styles.imageWrap}>
-          <div className={`${styles.imageInner} ${project.detailImageNatural ? styles.imageInnerNatural : ''}`}>
-            <img
-              src={project.imageSrc}
-              alt={project.title}
-              className={`${styles.image} ${project.detailImageNatural ? styles.imageNatural : ''}`}
-              style={project.detailImageNatural ? undefined : {
-                objectFit: project.detailImageFit || 'cover',
-                objectPosition: project.detailImagePosition || 'top',
-              }}
-            />
-          </div>
-        </div>
+        <ParallaxImage
+          src={project.imageSrc}
+          alt={project.title}
+          wrapClassName={styles.imageWrap}
+          innerClassName={`${styles.imageInner} ${project.detailImageNatural ? styles.imageInnerNatural : ''}`}
+          className={`${styles.image} ${project.detailImageNatural ? styles.imageNatural : ''}`}
+          style={project.detailImageNatural ? undefined : {
+            objectFit: project.detailImageFit || 'cover',
+            objectPosition: project.detailImagePosition || 'top',
+          }}
+        />
       )}
 
       {/* Content: left details + right sticky meta */}

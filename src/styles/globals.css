@@ -77,3 +77,61 @@ main {
   background: var(--yellow);
   color: var(--black);
 }
+
+/* Neubrutalism shared button utility
+   Override --neu-border-color / --neu-shadow-color per component for inverted contexts.
+*/
+.btn,
+.neubrutal-btn {
+  border: 3px solid #000 !important;
+  border-radius: 0 !important;
+  box-shadow: 5px 5px 0 0 #000 !important;
+  cursor: pointer;
+  transition: all 0.1s ease;
+  user-select: none;
+}
+
+.btn:hover,
+.neubrutal-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 7px 7px 0 0 #000 !important;
+}
+
+.btn:active,
+.neubrutal-btn:active {
+  transform: translate(3px, 3px);
+  box-shadow: none !important;
+}
+
+.btn:focus-visible,
+.neubrutal-btn:focus-visible {
+  outline: 3px solid #74B9FF;
+  outline-offset: 3px;
+}
+
+/* ── Page transition animations (next-view-transitions) ── */
+::view-transition-old(root) {
+  animation: vt-fade-out 0.3s ease forwards;
+}
+
+::view-transition-new(root) {
+  animation: vt-fade-in 0.3s ease forwards;
+}
+
+@keyframes vt-fade-out {
+  from { opacity: 1; transform: translateY(0); }
+  to   { opacity: 0; transform: translateY(-16px); }
+}
+
+@keyframes vt-fade-in {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+::view-transition-old(section-panel) {
+  animation: vt-fade-out 0.25s ease forwards;
+}
+
+::view-transition-new(section-panel) {
+  animation: vt-fade-in 0.25s ease forwards;
+}

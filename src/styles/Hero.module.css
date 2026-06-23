@@ -13,34 +13,19 @@
 }
 
 .statement {
+  font-family: var(--font-champs), sans-serif;
   font-size: clamp(3rem, 7.5vw, 8rem);
-  font-weight: 700;
+  font-weight: 400;
   line-height: 1.05;
   letter-spacing: -3px;
   max-width: 1100px;
 }
 
-/* Word-by-word reveal on load */
+/* Word-by-word reveal — animation handled by Framer Motion */
 .word {
   display: inline-block;
-  overflow: hidden;
   vertical-align: top;
-  /* preserve the space between words */
   margin-right: 0.25em;
-}
-
-.wordInner {
-  display: inline-block;
-  transform: translateY(110%);
-  opacity: 0;
-  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-  will-change: transform, opacity;
-}
-
-.play .wordInner {
-  transform: translateY(0);
-  opacity: 1;
 }
 
 .highlight {

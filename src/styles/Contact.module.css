@@ -110,27 +110,28 @@
   margin-top: 12px;
   background: var(--bg);
   color: var(--black);
-  border: var(--border);
+  border: 3px solid #444;
+  border-radius: 0;
+  outline: none;
   padding: 18px 32px;
   font-family: var(--font-space), 'Space Grotesk', sans-serif;
   font-size: 1rem;
   font-weight: 700;
   letter-spacing: 0.3px;
   cursor: pointer;
-  box-shadow: var(--shadow-md);
-  transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: 5px 5px 0 0 #444;
+  transition: all 0.1s ease;
   width: 100%;
 }
 
 .submitBtn:hover:not(:disabled) {
-  background: var(--white);
   transform: translate(-2px, -2px);
-  box-shadow: var(--shadow-lg);
+  box-shadow: 7px 7px 0 0 #444;
 }
 
 .submitBtn:active:not(:disabled) {
   transform: translate(3px, 3px);
-  box-shadow: 1px 1px 0 var(--black);
+  box-shadow: none;
 }
 
 .submitBtn:disabled {
@@ -182,8 +183,10 @@
   justify-content: center;
   font-size: 1.4rem;
   color: #ffffff;
-  border: 2px solid rgba(255, 255, 255, 0.25);
-  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  background: #000;
+  border: 3px solid;
+  border-radius: 0;
+  transition: all 0.1s ease;
 }
 
 .socialMeta {
@@ -206,32 +209,40 @@
   transition: color 0.2s ease;
 }
 
-/* Hover colorization per platform */
-.linkedin:hover .socialIcon {
-  background: #0A66C2;
+/* Per-platform colored border + shadow (neubrutalism: color is the accent, black is the void) */
+.linkedin .socialIcon {
   border-color: #0A66C2;
-  color: #ffffff;
+  box-shadow: 5px 5px 0 0 #0A66C2;
 }
-.linkedin:hover .socialLabel {
-  color: #0A66C2;
+.email .socialIcon {
+  border-color: #EA4335;
+  box-shadow: 5px 5px 0 0 #EA4335;
+}
+.phone .socialIcon {
+  border-color: #25D366;
+  box-shadow: 5px 5px 0 0 #25D366;
+}
+
+/* Hover — icon lifts, shadow grows */
+.linkedin:hover .socialIcon {
+  transform: translate(-2px, -2px);
+  box-shadow: 7px 7px 0 0 #0A66C2;
 }
 
 .email:hover .socialIcon {
-  background: #EA4335;
-  border-color: #EA4335;
-  color: #ffffff;
-}
-.email:hover .socialLabel {
-  color: #EA4335;
+  transform: translate(-2px, -2px);
+  box-shadow: 7px 7px 0 0 #EA4335;
 }
 
 .phone:hover .socialIcon {
-  background: #25D366;
-  border-color: #25D366;
-  color: #ffffff;
+  transform: translate(-2px, -2px);
+  box-shadow: 7px 7px 0 0 #25D366;
 }
-.phone:hover .socialLabel {
-  color: #25D366;
+
+/* Active — icon presses in */
+.socialRow:active .socialIcon {
+  transform: translate(3px, 3px);
+  box-shadow: none !important;
 }
 
 /* ── Responsive ── */
