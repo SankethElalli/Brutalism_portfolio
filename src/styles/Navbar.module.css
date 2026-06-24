@@ -1,23 +1,36 @@
-/* ── Floating nav pill ── */
-.navbar {
+/* ── Fixed full-width wrapper that centers the pill ──
+   The wrapper does the fixed positioning; the pill is laid out normally inside
+   it (centered by flex). This avoids fixed-position width math (left/right/
+   transform + auto width) that could paint at a stale size on first load and
+   only correct after a scroll-triggered reflow. */
+.navbarWrap {
   position: fixed;
   top: 20px;
-  left: 50%;
-  transform: translateX(-50%) translateY(0);
+  left: 0;
+  right: 0;
   z-index: 100;
-  background: #dcdcdc;
-  border: var(--border);
-  box-shadow: var(--shadow-md);
+  display: flex;
+  justify-content: center;
+  padding: 0 16px;
+  pointer-events: none;
   transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s ease;
-  width: clamp(560px, 72vw, 1000px);
-  max-width: calc(100vw - 40px);
 }
 
 /* Scroll-down: slide up and fade out */
-.navbarHidden {
-  transform: translateX(-50%) translateY(calc(-100% - 28px));
+.navbarWrapHidden {
+  transform: translateY(calc(-100% - 28px));
   opacity: 0;
-  pointer-events: none;
+}
+
+/* ── Floating nav pill ── */
+.navbar {
+  font-family: var(--font-bricolage), 'Space Grotesk', sans-serif;
+  pointer-events: auto;
+  width: clamp(560px, 72vw, 1000px);
+  max-width: 100%;
+  background: #dcdcdc;
+  border: var(--border);
+  box-shadow: var(--shadow-md);
 }
 
 .container {
@@ -123,61 +136,211 @@
   background: var(--black);
 }
 
-/* ── Mobile menu ── */
-.mobileMenu {
-  display: none;
+/* ── Full-screen glitch menu ── */
+.menuOverlay {
+  font-family: var(--font-bricolage), 'Space Grotesk', sans-serif;
   position: fixed;
-  top: 86px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--bg);
-  border: var(--border);
-  box-shadow: var(--shadow-md);
-  padding: 12px;
-  flex-direction: column;
-  gap: 8px;
-  z-index: 99;
-  min-width: 200px;
-}
-
-.mobileMenuOpen {
-  display: flex;
-}
-
-.mobileLink {
-  font-size: 1rem;
-  font-weight: 600;
-  padding: 12px 16px;
-  border: var(--border);
-  background: var(--white);
-  box-shadow: var(--shadow-sm);
-  text-decoration: none;
-  color: var(--black);
-  transition: var(--transition);
-  display: block;
-}
-
-.mobileLink:hover {
-  background: var(--bg);
-  transform: translate(-2px, -2px);
-  box-shadow: var(--shadow-md);
-}
-
-.mobileLinkActive {
+  inset: 0;
+  z-index: 300;
+  height: 100dvh;
   background: var(--black);
-  color: var(--white);
+  color: var(--bg);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  overscroll-behavior: contain;
+  will-change: clip-path;
 }
 
-.mobileLinkActive:hover {
+/* RGB glitch flash layer */
+.glitchFlash {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  mix-blend-mode: screen;
+  pointer-events: none;
+  opacity: 0;
+}
+
+/* CRT scanlines + faint vignette */
+.scanlines {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.035) 0px,
+    rgba(255, 255, 255, 0.035) 1px,
+    transparent 1px,
+    transparent 4px
+  );
+  opacity: 0.7;
+}
+
+/* Header inside overlay */
+.menuHeader {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 22px clamp(28px, 8vw, 56px) 0;
+}
+
+.menuClose {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
   background: var(--bg);
   color: var(--black);
+  border: 3px solid #9b9b9b;
+  box-shadow: 4px 4px 0 0 #9b9b9b;
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+}
+
+.menuClose:hover {
+  background: var(--red);
+  color: var(--bg);
+  transform: rotate(90deg) translate(0, 0);
+  box-shadow: 4px 4px 0 0 #5a5a5a;
+}
+
+.menuClose:active {
+  transform: translate(3px, 3px);
+  box-shadow: none;
+}
+
+/* Nav list */
+.menuNav {
+  position: relative;
+  z-index: 3;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 24px clamp(28px, 8vw, 56px);
+  gap: 2px;
+  overflow: hidden;
+}
+
+.menuLink {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: clamp(10px, 2.2vh, 20px) 2px;
+  color: var(--bg);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 252, 232, 0.1);
+  transition: padding-left 0.25s ease, color 0.2s ease;
+}
+
+.menuLink:hover,
+.menuLink:focus-visible {
+  padding-left: 22px;
+  color: #00F0FF;
+  outline: none;
+}
+
+/* Glitch text — chromatic split via pseudo-elements */
+.glitchText {
+  position: relative;
+  flex: 1;
+  font-size: clamp(2.6rem, 13vw, 4.5rem);
+  font-weight: 800;
+  letter-spacing: -2px;
+  line-height: 0.95;
+  text-transform: lowercase;
+}
+
+.glitchText::before,
+.glitchText::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* run the glitch once when the link mounts (menu opens) */
+.glitchText::before {
+  color: var(--red);
+  animation: glitchTop 0.55s steps(2, end) 0.2s 1;
+}
+
+.glitchText::after {
+  color: var(--blue);
+  animation: glitchBottom 0.55s steps(2, end) 0.2s 1;
+}
+
+/* and again on hover for tactile feedback */
+.menuLink:hover .glitchText::before {
+  animation: glitchTop 0.4s steps(2, end) 1;
+}
+
+.menuLink:hover .glitchText::after {
+  animation: glitchBottom 0.4s steps(2, end) 1;
+}
+
+@keyframes glitchTop {
+  0%   { opacity: 0.9; transform: translate(0, 0); clip-path: inset(0 0 65% 0); }
+  20%  { transform: translate(-5px, -3px); clip-path: inset(0 0 55% 0); }
+  40%  { transform: translate(4px, 2px); clip-path: inset(10% 0 60% 0); }
+  60%  { opacity: 0.9; transform: translate(-3px, 0); clip-path: inset(0 0 70% 0); }
+  80%  { transform: translate(3px, -2px); clip-path: inset(5% 0 60% 0); }
+  100% { opacity: 0; transform: translate(0, 0); }
+}
+
+@keyframes glitchBottom {
+  0%   { opacity: 0.9; transform: translate(0, 0); clip-path: inset(60% 0 0 0); }
+  20%  { transform: translate(5px, 3px); clip-path: inset(55% 0 0 0); }
+  40%  { transform: translate(-4px, -2px); clip-path: inset(65% 0 5% 0); }
+  60%  { opacity: 0.9; transform: translate(3px, 0); clip-path: inset(58% 0 0 0); }
+  80%  { transform: translate(-3px, 2px); clip-path: inset(62% 0 0 0); }
+  100% { opacity: 0; transform: translate(0, 0); }
+}
+
+.menuArrow {
+  display: flex;
+  align-items: center;
+  font-size: 1.6rem;
+  color: rgba(255, 252, 232, 0.4);
+  align-self: flex-start;
+  margin-top: 0.4em;
+  transition: transform 0.25s ease, color 0.2s ease;
+}
+
+.menuLink:hover .menuArrow {
+  color: var(--green);
+  transform: translate(4px, -4px);
+}
+
+.menuLinkActive .glitchText {
+  color: #00F0FF;
 }
 
 @media (max-width: 600px) {
+  /* Pill fills the wrapper (which already has 16px side padding) → even gutters */
   .navLinks {
     display: none;
   }
   .hamburger {
     display: flex;
+  }
+}
+
+/* Respect reduced-motion: skip the glitch jitter */
+@media (prefers-reduced-motion: reduce) {
+  .glitchText::before,
+  .glitchText::after,
+  .menuLink:hover .glitchText::before,
+  .menuLink:hover .glitchText::after {
+    animation: none;
   }
 }

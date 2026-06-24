@@ -114,6 +114,8 @@
 
 /* ── Animated inner ── */
 .cardInner {
+  /* Modal body keeps Space Grotesk — Bricolage only on the header title */
+  font-family: var(--font-space), 'Space Grotesk', sans-serif;
   padding: 28px;
   max-height: 72vh;
   overflow-y: auto;

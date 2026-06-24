@@ -31,14 +31,17 @@
 
 html {
   scroll-behavior: smooth;
+  /* clip (not hidden) avoids creating a scroll container, so position:sticky
+     in ProjectsStack keeps working while page-level horizontal scroll is killed */
+  overflow-x: clip;
 }
 
 body {
-  font-family: var(--font-space), 'Space Grotesk', sans-serif;
+  font-family: var(--font-bricolage), var(--font-space), 'Space Grotesk', sans-serif;
   background-color: var(--bg);
   color: var(--black);
   line-height: 1.6;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 img {

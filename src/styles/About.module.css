@@ -1,6 +1,10 @@
 .section {
+  font-family: var(--font-bricolage), 'Space Grotesk', sans-serif;
   background: var(--bg);
   padding: 80px clamp(16px, 4vw, 56px) 100px;
+  /* Contain the slide-in animations (photo enters from x:48) so they can never
+     push the page wider than the viewport and create horizontal scroll. */
+  overflow-x: clip;
 }
 
 /* Big display heading — matches project card title sizing */

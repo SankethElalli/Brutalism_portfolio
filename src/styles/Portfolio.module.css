@@ -464,3 +464,11 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
+
+/* Strip year + category — a touch bolder on desktop only */
+@media (min-width: 901px) {
+  .year,
+  .category {
+    font-weight: 700;
+  }
+}

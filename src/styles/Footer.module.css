@@ -75,6 +75,7 @@
 .role {
   font-family: 'Courier New', 'Courier', monospace;
   font-size: 0.78rem;
+  font-weight: 700;
   letter-spacing: 2.5px;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.65);
@@ -178,5 +179,17 @@
     align-items: flex-start;
     gap: 28px;
     margin-bottom: 40px;
+  }
+  /* Keep the role tagline on ONE line, but scale it with the viewport
+     so it always fits — never forcing horizontal overflow. */
+  .role {
+    white-space: nowrap;
+    font-size: clamp(0.7rem, 2.4vw, 0.78rem);
+    letter-spacing: 0.5px;
+  }
+  /* Contact button fills the row so it doesn't sit awkwardly */
+  .contactBtn {
+    width: 100%;
+    justify-content: space-between;
   }
 }

@@ -1,4 +1,4 @@
-import { Space_Grotesk } from 'next/font/google'
+import { Space_Grotesk, Bricolage_Grotesque } from 'next/font/google'
 import { ViewTransitions } from 'next-view-transitions'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
@@ -8,6 +8,13 @@ const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
   weight: ['300', '400', '500', '600', '700'],
   variable: '--font-space',
+  display: 'swap',
+})
+
+const bricolageGrotesque = Bricolage_Grotesque({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800'],
+  variable: '--font-bricolage',
   display: 'swap',
 })
 
@@ -25,7 +32,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <ViewTransitions>
-      <html lang="en" className={spaceGrotesk.variable}>
+      <html lang="en" className={`${spaceGrotesk.variable} ${bricolageGrotesque.variable}`}>
         <body>
           <Navbar />
           <main>{children}</main>
