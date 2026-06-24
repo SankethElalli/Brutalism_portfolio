@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { RiLinkedinFill, RiMailFill, RiPhoneFill } from 'react-icons/ri'
+import { RiLinkedinFill, RiMailFill, RiPhoneFill, RiDiscordFill } from 'react-icons/ri'
 import styles from '@/styles/Contact.module.css'
 
 const socials = [
@@ -24,8 +24,20 @@ const socials = [
     label: 'LinkedIn',
     handle: '/in/snketh',
     href: 'https://www.linkedin.com/in/snketh',
+    external: true,
     icon: <RiLinkedinFill />,
-  }
+  },
+  {
+    key: 'discord',
+    label: 'Discord',
+    handle: '@snketh',
+    // Opens your Discord profile so anyone can message/add you.
+    // Replace the number below with your Discord User ID
+    // (Discord → Settings → Advanced → Developer Mode → right-click profile → Copy User ID).
+    href: 'https://discord.com/users/1088528899253747853',
+    external: true,
+    icon: <RiDiscordFill />,
+  },
 
 ]
 
@@ -147,8 +159,8 @@ export default function ContactSection() {
               <a
                 key={s.key}
                 href={s.href}
-                target={s.key === 'linkedin' ? '_blank' : undefined}
-                rel={s.key === 'linkedin' ? 'noopener noreferrer' : undefined}
+                target={s.external ? '_blank' : undefined}
+                rel={s.external ? 'noopener noreferrer' : undefined}
                 className={`${styles.socialRow} ${styles[s.key]}`}
               >
                 <span className={styles.socialIcon}>{s.icon}</span>

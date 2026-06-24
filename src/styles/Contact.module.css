@@ -222,6 +222,10 @@
   border-color: #25D366;
   box-shadow: 5px 5px 0 0 #25D366;
 }
+.discord .socialIcon {
+  border-color: #5865F2;
+  box-shadow: 5px 5px 0 0 #5865F2;
+}
 
 /* Hover — icon lifts, shadow grows */
 .linkedin:hover .socialIcon {
@@ -237,6 +241,11 @@
 .phone:hover .socialIcon {
   transform: translate(-2px, -2px);
   box-shadow: 7px 7px 0 0 #25D366;
+}
+
+.discord:hover .socialIcon {
+  transform: translate(-2px, -2px);
+  box-shadow: 7px 7px 0 0 #5865F2;
 }
 
 /* Active — icon presses in */
