@@ -232,7 +232,7 @@
   align-items: center;
   gap: 18px;
   padding: clamp(10px, 2.2vh, 20px) 2px;
-  color: var(--bg);
+  color: rgba(255, 255, 255, 0.45);
   text-decoration: none;
   border-bottom: 1px solid rgba(255, 252, 232, 0.1);
   transition: padding-left 0.25s ease, color 0.2s ease;
@@ -241,7 +241,7 @@
 .menuLink:hover,
 .menuLink:focus-visible {
   padding-left: 22px;
-  color: #00F0FF;
+  color: var(--bg);
   outline: none;
 }
 
@@ -322,7 +322,7 @@
 }
 
 .menuLinkActive .glitchText {
-  color: #00F0FF;
+  color: var(--bg);
 }
 
 @media (max-width: 600px) {
