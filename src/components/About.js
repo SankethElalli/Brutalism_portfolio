@@ -1,6 +1,7 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
+import { useRef } from 'react'
 import { Link } from 'next-view-transitions'
 import { RiArrowRightLine } from 'react-icons/ri'
 import styles from '@/styles/About.module.css'
@@ -21,8 +22,17 @@ const slideRight = {
 }
 
 export default function About() {
+  const sectionRef = useRef(null)
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start end', 'end start'],
+  })
+
+  const flowerRotate = useTransform(scrollYProgress, [0, 1], [18, 90])
+  const leavesRotate = useTransform(scrollYProgress, [0, 1], [-20, 40])
+
   return (
-    <section className={styles.section} id="about">
+    <section ref={sectionRef} className={styles.section} id="about">
       <motion.h2
         className={styles.heading}
         variants={fadeUp}
@@ -64,11 +74,15 @@ export default function About() {
           whileInView="visible"
           viewport={{ once: true, margin: '-80px' }}
         >
-          <img
-            src="/assets/images/profile.jpeg"
-            alt="Sanketh Elalli"
-            className={styles.photo}
-          />
+          <div className={styles.photoWrap}>
+            <img
+              src="/assets/images/profile.png"
+              alt="Sanketh Elalli"
+              className={styles.photo}
+            />
+            <motion.img src="/assets/art/noun-flower-7745994.png" className={styles.artFlower} aria-hidden="true" alt="" style={{ rotate: flowerRotate }} />
+            <motion.img src="/assets/art/noun-leaves-8298170.png" className={styles.artLeaves} aria-hidden="true" alt="" style={{ rotate: leavesRotate }} />
+          </div>
         </motion.div>
       </div>
     </section>

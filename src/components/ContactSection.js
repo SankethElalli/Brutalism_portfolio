@@ -81,6 +81,12 @@ export default function ContactSection() {
 
       {/* ── Hero ── */}
       <div className={styles.hero}>
+        <img
+          src="/assets/art/contact.png"
+          className={styles.heroBgArt}
+          aria-hidden="true"
+          alt=""
+        />
         <div className={styles.heroInner}>
           <h1 className={styles.heading}>say hi.</h1>
           <p className={styles.statement}>

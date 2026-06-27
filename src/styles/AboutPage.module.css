@@ -7,14 +7,29 @@
 
 /* ── Section 1: Cream hero ── */
 .hero {
+  position: relative;
   background: var(--bg);
   padding-top: calc(var(--nav-height) + 4px);
   min-height: 100vh;
   display: flex;
   align-items: center;
+  overflow: hidden;
+}
+
+.heroBgArt {
+  position: absolute;
+  right: -100px;
+  bottom: -100px;
+  width: 600px;
+  height: auto;
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: 0;
 }
 
 .heroInner {
+  position: relative;
+  z-index: 1;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;

@@ -85,28 +85,50 @@
   width: 100%;
 }
 
+.photoWrap {
+  position: relative;
+  isolation: isolate;
+  /* padding creates breathing room for the art icons that hang outside the photo */
+  padding: 44px 44px 44px 52px;
+}
+
 .photo {
   width: 100%;
   height: auto;
   display: block;
-  border: var(--border);
-  box-shadow: var(--shadow-md);
+  position: relative;
+  z-index: 1;
 }
 
-.photoPlaceholder {
-  width: 100%;
-  aspect-ratio: 4 / 5;
-  background: #d8d4cc;
-  border: var(--border);
-  box-shadow: var(--shadow-md);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.82rem;
-  font-weight: 500;
-  color: rgba(10, 10, 10, 0.35);
-  text-align: center;
-  line-height: 1.7;
+/* ── Decorative art icons ── */
+.artFlower,
+.artStar,
+.artLeaves {
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.artFlower {
+  top: -50px;
+  right: -50px;
+  width: 260px;
+  height: auto;
+}
+
+.artStar {
+  bottom: -56px;
+  right: -100px;
+  width: 280px;
+  height: auto;
+}
+
+.artLeaves {
+  top: 50%;
+  left: -80px;
+  width: 280px;
+  height: auto;
+  transform: translateY(-50%);
 }
 
 /* ── Responsive ── */
@@ -116,5 +138,44 @@
   }
   .rightCol {
     max-width: 480px;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 56px 20px 72px;
+  }
+
+  .heading {
+    margin-bottom: 32px;
+  }
+
+  .para {
+    font-size: clamp(1.1rem, 4.5vw, 1.4rem);
+  }
+
+  .rightCol {
+    max-width: 100%;
+  }
+
+  .photoWrap {
+    padding: 32px 32px 40px 40px;
+  }
+
+  .artFlower {
+    width: 160px;
+    top: -24px;
+    right: -24px;
+  }
+
+  .artStar {
+    width: 110px;
+    bottom: -20px;
+    right: -20px;
+  }
+
+  .artLeaves {
+    width: 100px;
+    left: -16px;
   }
 }

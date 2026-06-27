@@ -7,13 +7,28 @@
 
 /* ── Hero ── */
 .hero {
+  position: relative;
   padding-top: calc(var(--nav-height) + 4px);
   min-height: 100vh;
   display: flex;
   align-items: center;
+  overflow: hidden;
+}
+
+.heroBgArt {
+  position: absolute;
+  right: -80px;
+  bottom: -80px;
+  width: 620px;
+  height: auto;
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: 0;
 }
 
 .heroInner {
+  position: relative;
+  z-index: 1;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
